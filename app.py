@@ -9,14 +9,14 @@ from flask.cli import with_appcontext # add heroku
 
 app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/feriados.db' #SQLITE
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/feriados.db' #SQLITE
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+
+#app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
 #app.config['DATABASE_URL'] = 'postgres://ypflrgxypcfsut:ac078e12b0d25dd9105a98d5f85742e207a31c6720ae46723280e6361afe770c@ec2-54-172-173-58.compute-1.amazonaws.com:5432/de4bm0iuns2oqj'  #HEROKU
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ypflrgxypcfsut:ac078e12b0d25dd9105a98d5f85742e207a31c6720ae46723280e6361afe770c@ec2-54-172-173-58.compute-1.amazonaws.com:5432/de4bm0iuns2oqj'  #HEROKU
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
 #SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')    -> import os
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-#const PORT = process.env.PORT
-#app.set("port", PORT); # ADD HEROKU
 
 db = SQLAlchemy(app) #consultar a bd
 
@@ -91,26 +91,16 @@ def finsnacional():
 
 
 #(comentar abaixo para criar o banco e tabelas )
-#cret = finsnacional() # descomentar depois
-
-
-#existing = Feriados.query.filter(Feriados.codibge=='2').first()
-#if existing != None:  cretfer = finsereferiado('2','01-01','Ano Novo')
-
-#new_feriado2 = Feriados(codibge='2', data='01-01', name='Ano Novo')
-#db.session.add(new_feriado2)
-#db.session.commit()
+cret = finsnacional() # descomentar depois
 
 
 # carrega a base de dados em json
 #A sua API deve ser populada com os feriados nacionais.
 # Todos os feriados estaduais e municipais consultados nos testes serão criados através da API.
 #comentar abaixo para criar a tabela
-"""
 cols = ['codibge', 'data', 'name']
 data = Feriados.query.all()
 fers = [{col: getattr(d, col) for col in cols} for d in data]
-"""
 
 @app.route('/', methods=['GET'])
 def homeprincial():
@@ -473,12 +463,11 @@ def deletBd(ccodigo, cdata): # removendo do banco de dados
 
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000)) #add heroku
-    app.run(host='0.0.0.0', port=port)
-    #app.run(host='https://colossal-feriados.herokuapp.com', port=port) #add heroku
+    #port = int(os.environ.get("PORT", 5000)) #add heroku
+    ##app.run(host='0.0.0.0', port=port)       #add heroku
 
     #app.run(debug=False)
-    #app.run(debug=True)
+    app.run(debug=True)
 
 
 

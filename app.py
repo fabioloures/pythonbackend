@@ -92,9 +92,11 @@ cols = ['codibge', 'data', 'name']
 data = Feriados.query.all()
 fers = [{col: getattr(d, col) for col in cols} for d in data]
 
-@app.route('/')
+
+@app.route('/', methods=['GET'])
 def homeprincial():
-    return 'Api Feriados: Colossal'
+    return 'Api Feriados:Colossal'
+
 
 @app.route('/feriados/', methods=['GET'])
 def home():

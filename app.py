@@ -1,3 +1,4 @@
+import os # ADD heroku  https://blog.heroku.com/python_and_django
 from flask import Flask, jsonify, request, abort , render_template
 from datetime import date
 import datetime
@@ -6,6 +7,8 @@ from flask_sqlalchemy import SQLAlchemy #usado para acessar o banco de dados
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/feriados.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+#const PORT = process.env.PORT
+#app.set("port", PORT); # ADD HEROKU
 
 db = SQLAlchemy(app) #consultar a bd
 
@@ -454,7 +457,9 @@ def deletBd(ccodigo, cdata): # removendo do banco de dados
 
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    port = int(os.environ.get("PORT", 5000)) #add heroku
+    app.run(host='https://colossal-feriados.herokuapp.com', port=port) #add heroku
+    #app.run(debug=False)
     #app.run(debug=True)
 
 

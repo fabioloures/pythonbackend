@@ -6096,9 +6096,5 @@ def deletBd(ccodigo, cdata): # removendo do banco de dados
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000)) #add heroku
     app.run(host='0.0.0.0', port=port)       #add heroku
-
     #app.run(debug=False)
     #app.run(debug=True)
-
-
-

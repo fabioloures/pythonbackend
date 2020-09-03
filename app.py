@@ -3,16 +3,21 @@ from flask import Flask, jsonify, request, abort , render_template
 from datetime import date
 import datetime
 from flask_sqlalchemy import SQLAlchemy #usado para acessar o banco de dados
+import click # add heroku
+from flask.cli import with_appcontext # add heroku
 
 app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/feriados.db' #SQLITE
-app.config['DATABASE_URL'] = 'postgres://ypflrgxypcfsut:ac078e12b0d25dd9105a98d5f85742e207a31c6720ae46723280e6361afe770c@ec2-54-172-173-58.compute-1.amazonaws.com:5432/de4bm0iuns2oqj'  #HEROKU
 
+#app.config['DATABASE_URL'] = 'postgres://ypflrgxypcfsut:ac078e12b0d25dd9105a98d5f85742e207a31c6720ae46723280e6361afe770c@ec2-54-172-173-58.compute-1.amazonaws.com:5432/de4bm0iuns2oqj'  #HEROKU
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ypflrgxypcfsut:ac078e12b0d25dd9105a98d5f85742e207a31c6720ae46723280e6361afe770c@ec2-54-172-173-58.compute-1.amazonaws.com:5432/de4bm0iuns2oqj'  #HEROKU
+#SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')    -> import os
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 #const PORT = process.env.PORT
 #app.set("port", PORT); # ADD HEROKU
 
 db = SQLAlchemy(app) #consultar a bd
+
 
 #classe dos banco = Feriados
 class Feriados(db.Model):
@@ -32,6 +37,12 @@ def finsfe(codigo,datafer,nomefer):
     db.session.add(new_feriadoatual)
     db.session.commit()
     return("OK")
+
+#criado para criar as tabelas em POSTEGRES no heroku
+@click.command(name='create_tables')
+@with_appcontext
+def create_tables():
+    db.create_all()
 
 #A sua API deve ser populada com os feriados nacionais.
 #C:\Users\Casa\PycharmProjects\pythonbackend\database>set PATH=%PATCH%;C:\sqlite;

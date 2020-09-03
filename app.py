@@ -51,6 +51,7 @@ def finsmunicipio(codigo,nome):
 def create_tables():
     db.create_all()
 
+
 #A sua API deve ser populada com os feriados nacionais.
 #C:\Users\Casa\PycharmProjects\pythonbackend\database>set PATH=%PATCH%;C:\sqlite;
 #C:\Users\Casa\PycharmProjects\pythonbackend\database>sqlite3 feriados.db

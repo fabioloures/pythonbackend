@@ -5,7 +5,7 @@ import datetime
 from flask_sqlalchemy import SQLAlchemy #usado para acessar o banco de dados
 import click # add heroku
 from flask.cli import with_appcontext # add heroku
-#import psycopg2 # add heroku
+import psycopg2 # add heroku
 
 app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/feriados.db' #SQLITE
@@ -90,18 +90,18 @@ def finsnacional():
 
 
 #(comentar abaixo para criar o banco e tabelas )
-#cret = finsnacional() # descomentar depois
+cret = finsnacional() # descomentar depois
 
 
 # carrega a base de dados em json
 #A sua API deve ser populada com os feriados nacionais.
 # Todos os feriados estaduais e municipais consultados nos testes serão criados através da API.
 #comentar abaixo para criar a tabela
-"""
 cols = ['codibge', 'data', 'name']
 data = Feriados.query.all()
 fers = [{col: getattr(d, col) for col in cols} for d in data]
 
+"""
 colsm = ['codigo_ibge', 'nome']
 datam = Municipios.query.all()
 munis = [{col: getattr(d, col) for col in colsm} for d in datam]

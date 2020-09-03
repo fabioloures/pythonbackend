@@ -1,10 +1,11 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "de436f056f19e34eade978a9ba06f1758fb6736746915efc9c0dabe0c54988da"
+            "sha256": "196c13f6cba7fd6f3aa6c5a9e88dab31aa2a32e1290a1857194eb881899a521c"
         },
         "pipfile-spec": 6,
         "requires": {
+            "psycopg2": "2.8.5",
             "python_version": "3.8"
         },
         "sources": [

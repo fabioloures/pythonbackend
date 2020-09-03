@@ -7,6 +7,7 @@ from flask_sqlalchemy import SQLAlchemy #usado para acessar o banco de dados
 app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/feriados.db' #SQLITE
 app.config['DATABASE_URL'] = 'postgres://ypflrgxypcfsut:ac078e12b0d25dd9105a98d5f85742e207a31c6720ae46723280e6361afe770c@ec2-54-172-173-58.compute-1.amazonaws.com:5432/de4bm0iuns2oqj'  #HEROKU
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 #const PORT = process.env.PORT
 #app.set("port", PORT); # ADD HEROKU
@@ -77,7 +78,7 @@ def finsnacional():
 
 
 #(comentar abaixo para criar o banco e tabelas )
-cret = finsnacional()
+#cret = finsnacional() # descomentar depois
 
 
 #existing = Feriados.query.filter(Feriados.codibge=='2').first()
@@ -92,10 +93,11 @@ cret = finsnacional()
 #A sua API deve ser populada com os feriados nacionais.
 # Todos os feriados estaduais e municipais consultados nos testes serão criados através da API.
 #comentar abaixo para criar a tabela
+"""
 cols = ['codibge', 'data', 'name']
 data = Feriados.query.all()
 fers = [{col: getattr(d, col) for col in cols} for d in data]
-
+"""
 
 @app.route('/', methods=['GET'])
 def homeprincial():

@@ -58,6 +58,7 @@ def create_tables():
 #(.venv) C:\Users\Casa\PycharmProjects\pythonbackend>python
 #>>> from app import db
 #>>> db.create_all()
+#usar o POSTEGRE no HEROKU : pip install psycopg2
 #inserindo os feriados nacionais na base de dados
 def finsnacional():
     records = Feriados.query.filter_by(codibge = '1').first()

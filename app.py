@@ -102,6 +102,10 @@ cols = ['codibge', 'data', 'name']
 data = Feriados.query.all()
 fers = [{col: getattr(d, col) for col in cols} for d in data]
 
+colsm = ['codigo_ibge', 'nome']
+datam = Municipios.query.all()
+munis = [{col: getattr(d, col) for col in colsm} for d in datam]
+
 @app.route('/', methods=['GET'])
 def homeprincial():
     return 'Api Feriados:Colossal'
@@ -110,6 +114,10 @@ def homeprincial():
 @app.route('/feriados/', methods=['GET'])
 def home():
     return jsonify(fers), 200
+
+@app.route('/municipios/', methods=['GET'])
+def home():
+    return jsonify(munis), 200
 
 
 @app.route('/feriados/<string:codibge>/<string:data>/', methods=['GET'])

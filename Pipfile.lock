@@ -4,7 +4,7 @@
             "sha256": "196c13f6cba7fd6f3aa6c5a9e88dab31aa2a32e1290a1857194eb881899a521c"
         },
         "pipfile-spec": 6,
-        "requires": {
+        "requires":  {
             "psycopg2": "2.8.5",
             "python_version": "3.8"
         },

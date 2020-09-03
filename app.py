@@ -116,7 +116,7 @@ def home():
     return jsonify(fers), 200
 
 @app.route('/municipios/', methods=['GET'])
-def home():
+def homemunici():
     return jsonify(munis), 200
 
 

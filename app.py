@@ -9,11 +9,10 @@ from flask.cli import with_appcontext # add heroku
 
 app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/feriados.db' #SQLITE
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/feriados.db' #SQLITE
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-
-#app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
 #app.config['DATABASE_URL'] = 'postgres://ypflrgxypcfsut:ac078e12b0d25dd9105a98d5f85742e207a31c6720ae46723280e6361afe770c@ec2-54-172-173-58.compute-1.amazonaws.com:5432/de4bm0iuns2oqj'  #HEROKU
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ypflrgxypcfsut:ac078e12b0d25dd9105a98d5f85742e207a31c6720ae46723280e6361afe770c@ec2-54-172-173-58.compute-1.amazonaws.com:5432/de4bm0iuns2oqj'  #HEROKU
 #SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')    -> import os
@@ -91,13 +90,14 @@ def finsnacional():
 
 
 #(comentar abaixo para criar o banco e tabelas )
-cret = finsnacional() # descomentar depois
+#cret = finsnacional() # descomentar depois
 
 
 # carrega a base de dados em json
 #A sua API deve ser populada com os feriados nacionais.
 # Todos os feriados estaduais e municipais consultados nos testes serão criados através da API.
 #comentar abaixo para criar a tabela
+"""
 cols = ['codibge', 'data', 'name']
 data = Feriados.query.all()
 fers = [{col: getattr(d, col) for col in cols} for d in data]
@@ -105,6 +105,7 @@ fers = [{col: getattr(d, col) for col in cols} for d in data]
 colsm = ['codigo_ibge', 'nome']
 datam = Municipios.query.all()
 munis = [{col: getattr(d, col) for col in colsm} for d in datam]
+"""
 
 @app.route('/', methods=['GET'])
 def homeprincial():
@@ -118,7 +119,6 @@ def home():
 @app.route('/municipios/', methods=['GET'])
 def homemunici():
     return jsonify(munis), 200
-
 
 @app.route('/feriados/<string:codibge>/<string:data>/', methods=['GET'])
 def fers_per_feriado(codibge,data):

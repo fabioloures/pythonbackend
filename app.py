@@ -11,7 +11,8 @@ app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/feriados.db' #SQLITE
 
 #app.config['DATABASE_URL'] = 'postgres://ypflrgxypcfsut:ac078e12b0d25dd9105a98d5f85742e207a31c6720ae46723280e6361afe770c@ec2-54-172-173-58.compute-1.amazonaws.com:5432/de4bm0iuns2oqj'  #HEROKU
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ypflrgxypcfsut:ac078e12b0d25dd9105a98d5f85742e207a31c6720ae46723280e6361afe770c@ec2-54-172-173-58.compute-1.amazonaws.com:5432/de4bm0iuns2oqj'  #HEROKU
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ypflrgxypcfsut:ac078e12b0d25dd9105a98d5f85742e207a31c6720ae46723280e6361afe770c@ec2-54-172-173-58.compute-1.amazonaws.com:5432/de4bm0iuns2oqj'  #HEROKU
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
 #SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')    -> import os
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 #const PORT = process.env.PORT

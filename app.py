@@ -101,11 +101,10 @@ cols = ['codibge', 'data', 'name']
 data = Feriados.query.all()
 fers = [{col: getattr(d, col) for col in cols} for d in data]
 
-"""
 colsm = ['codigo_ibge', 'nome']
 datam = Municipios.query.all()
 munis = [{col: getattr(d, col) for col in colsm} for d in datam]
-"""
+
 
 @app.route('/', methods=['GET'])
 def homeprincial():
@@ -129,7 +128,6 @@ def fers_per_feriado(codibge,data):
 
     # 1) VERIFICAR SE A DATA PASSADA E UM FERIADO MOVEL  -> if len(fers_per_feriado)==0:
     # let query = http.get(`${BASE_URL}/feriados/2111300/2020-04-10/`);   'é Sexta-Feira Santa em São Luís':
-
     feriadonome = ""
     if len(fers_per_feriado) == 0:
        feriadonome = feriadomovel(data[0:4], data) # passando o ANO para ver se e a data para ver se é um feriado movel (RETORNA O NOME)

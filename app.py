@@ -5,6 +5,7 @@ import datetime
 from flask_sqlalchemy import SQLAlchemy #usado para acessar o banco de dados
 import click # add heroku
 from flask.cli import with_appcontext # add heroku
+import psycopg2 # add heroku
 
 app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/feriados.db' #SQLITE

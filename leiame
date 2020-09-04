@@ -1,0 +1,51 @@
+git init
+git add .
+git commit -m "commit-inicial"
+git remote add origin https://github.com/fabioloures/pythonbackend.git
+
+git push -u origin master
+fazer  esse abaixo
+git push --force origin master
+
+==============================================================
+
+
+dentro do CMD
+C:\WINDOWS\system32>cd C:\Users\Casa\PycharmProjects\pythonbackend\database
+
+criar o BANCO DE DADOS
+C:\Users\Casa\PycharmProjects\pythonbackend\database>set PATH=%PATCH%;C:\sqlite;
+
+C:\Users\Casa\PycharmProjects\pythonbackend\database>sqlite3 feriados.db
+
+criar BD
+2020-12-01
+(.venv) C:\Users\Casa\PycharmProjects\pythonbackend>python
+Python 3.8.5 (tags/v3.8.5:580fbb0, Jul 20 2020, 15:57:54) [MSC v.1924 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from app import db
+
+C:\Users\Casa\Colossal\.venv\lib\site-packages\flask_sqlalchemy\__init__.py:833: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and
+will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  warnings.warn(FSADeprecationWarning(
+
+>>> from app import db
+>>> from app import db
+>>> db.create_all()
+
+
+sqlite3 database/feriados.db
+
+===========
+modulenotfoundError: no module named psycopg2
+no heroku para postegre
+pip install psycopg2-binary
+=============
+pip install psycopg2
+
+(.venv) C:\Users\Casa\PycharmProjects\pythonbackend>python
+Python 3.8.5 (tags/v3.8.5:580fbb0, Jul 20 2020, 15:57:54) [MSC v.1924 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from app import db
+>>> db.create_all()
+==========================================================================
